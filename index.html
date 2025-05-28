@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Выводы с бота FlowSignal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #000;
+      color: white;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    .win-box {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideIn 0.5s forwards;
+    }
+    .icon {
+      width: 48px;
+      height: 48px;
+      margin-right: 15px;
+      background-color: rgba(255,255,255,0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .info {
+      flex: 1;
+    }
+    .game {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+    .amount {
+      font-size: 16px;
+      font-weight: bold;
+      color: #00ffcc;
+    }
+    .timestamp {
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 5px;
+    }
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>💸 Выводы с бота <b>FlowSignal</b></h2>
+  <div id="wins"></div>
+
+  <script>
+    const icons = {
+      Coinflip: '💰', Crash: '💥', Rocket: '🚀', Goal: '⚽',
+      Aviator: '✈️', Dice: '🎲', Mines: '💣', LuckyGet: '🍀', Penalty: '🥅'
+    };
+
+    const wins = [{"id": "USER-714369", "game": "Coinflip", "amount": "34 874 ₽"}, {"id": "USER-658576", "game": "LuckyGet", "amount": "30 406 ₽"}, {"id": "USER-949569", "game": "Dice", "amount": "32 805 ₽"}, {"id": "USER-518524", "game": "Rocket", "amount": "15 859 ₽"}, {"id": "USER-929950", "game": "Dice", "amount": "37 214 ₽"}, {"id": "USER-109152", "game": "Goal", "amount": "35 291 ₽"}, {"id": "USER-926254", "game": "Penalty", "amount": "19 357 ₽"}, {"id": "USER-959981", "game": "Rocket", "amount": "9 263 ₽"}, {"id": "USER-723100", "game": "Mines", "amount": "22 266 ₽"}, {"id": "USER-948279", "game": "Penalty", "amount": "16 288 ₽"}, {"id": "USER-511069", "game": "Dice", "amount": "31 561 ₽"}, {"id": "USER-773912", "game": "LuckyGet", "amount": "4 387 ₽"}, {"id": "USER-880198", "game": "Dice", "amount": "8 131 ₽"}, {"id": "USER-994674", "game": "Mines", "amount": "15 983 ₽"}, {"id": "USER-912475", "game": "Crash", "amount": "5 622 ₽"}, {"id": "USER-455496", "game": "Dice", "amount": "22 411 ₽"}, {"id": "USER-228079", "game": "Rocket", "amount": "5 804 ₽"}, {"id": "USER-924969", "game": "Aviator", "amount": "34 851 ₽"}, {"id": "USER-272261", "game": "Dice", "amount": "28 941 ₽"}, {"id": "USER-927136", "game": "Coinflip", "amount": "32 229 ₽"}, {"id": "USER-893934", "game": "Coinflip", "amount": "9 713 ₽"}, {"id": "USER-679572", "game": "Crash", "amount": "10 210 ₽"}, {"id": "USER-906065", "game": "Coinflip", "amount": "16 185 ₽"}, {"id": "USER-932017", "game": "Coinflip", "amount": "14 669 ₽"}, {"id": "USER-182537", "game": "Rocket", "amount": "21 723 ₽"}, {"id": "USER-163750", "game": "Goal", "amount": "4 425 ₽"}, {"id": "USER-790129", "game": "Aviator", "amount": "30 403 ₽"}, {"id": "USER-686317", "game": "LuckyGet", "amount": "32 106 ₽"}, {"id": "USER-633447", "game": "Dice", "amount": "18 831 ₽"}, {"id": "USER-681358", "game": "Aviator", "amount": "37 078 ₽"}, {"id": "USER-518733", "game": "Goal", "amount": "21 348 ₽"}, {"id": "USER-981706", "game": "Aviator", "amount": "20 152 ₽"}, {"id": "USER-301561", "game": "Penalty", "amount": "12 992 ₽"}, {"id": "USER-972454", "game": "Goal", "amount": "6 636 ₽"}, {"id": "USER-550887", "game": "Goal", "amount": "27 580 ₽"}, {"id": "USER-759439", "game": "Goal", "amount": "24 284 ₽"}, {"id": "USER-650507", "game": "Mines", "amount": "18 388 ₽"}, {"id": "USER-702531", "game": "LuckyGet", "amount": "6 181 ₽"}, {"id": "USER-229057", "game": "Penalty", "amount": "16 552 ₽"}, {"id": "USER-563152", "game": "LuckyGet", "amount": "27 168 ₽"}, {"id": "USER-108836", "game": "Mines", "amount": "28 621 ₽"}, {"id": "USER-658102", "game": "Goal", "amount": "12 029 ₽"}, {"id": "USER-499425", "game": "Penalty", "amount": "20 195 ₽"}, {"id": "USER-833238", "game": "Penalty", "amount": "20 456 ₽"}, {"id": "USER-146406", "game": "Crash", "amount": "29 762 ₽"}, {"id": "USER-604643", "game": "Rocket", "amount": "34 966 ₽"}, {"id": "USER-368224", "game": "Coinflip", "amount": "36 946 ₽"}, {"id": "USER-335378", "game": "Mines", "amount": "29 046 ₽"}, {"id": "USER-450189", "game": "LuckyGet", "amount": "32 722 ₽"}, {"id": "USER-253618", "game": "Penalty", "amount": "35 476 ₽"}, {"id": "USER-265662", "game": "Dice", "amount": "26 555 ₽"}, {"id": "USER-728453", "game": "Goal", "amount": "27 753 ₽"}, {"id": "USER-483252", "game": "Rocket", "amount": "7 859 ₽"}, {"id": "USER-422956", "game": "LuckyGet", "amount": "15 033 ₽"}, {"id": "USER-853006", "game": "Dice", "amount": "19 332 ₽"}, {"id": "USER-149462", "game": "Crash", "amount": "5 067 ₽"}, {"id": "USER-599231", "game": "Crash", "amount": "20 780 ₽"}, {"id": "USER-237691", "game": "Rocket", "amount": "27 433 ₽"}, {"id": "USER-581340", "game": "Aviator", "amount": "14 190 ₽"}, {"id": "USER-127278", "game": "Crash", "amount": "11 748 ₽"}, {"id": "USER-221972", "game": "Rocket", "amount": "36 972 ₽"}, {"id": "USER-206711", "game": "Goal", "amount": "38 741 ₽"}, {"id": "USER-714144", "game": "Crash", "amount": "13 574 ₽"}, {"id": "USER-279973", "game": "Penalty", "amount": "22 320 ₽"}, {"id": "USER-561020", "game": "Mines", "amount": "17 044 ₽"}, {"id": "USER-282170", "game": "Aviator", "amount": "35 048 ₽"}, {"id": "USER-934518", "game": "Aviator", "amount": "4 947 ₽"}, {"id": "USER-801082", "game": "Penalty", "amount": "18 750 ₽"}, {"id": "USER-473611", "game": "Coinflip", "amount": "37 466 ₽"}, {"id": "USER-558288", "game": "Aviator", "amount": "39 969 ₽"}, {"id": "USER-516076", "game": "Aviator", "amount": "34 777 ₽"}, {"id": "USER-763848", "game": "Coinflip", "amount": "11 508 ₽"}, {"id": "USER-203299", "game": "LuckyGet", "amount": "27 687 ₽"}, {"id": "USER-230814", "game": "Mines", "amount": "30 882 ₽"}, {"id": "USER-777363", "game": "Mines", "amount": "6 131 ₽"}, {"id": "USER-669701", "game": "LuckyGet", "amount": "18 107 ₽"}, {"id": "USER-186598", "game": "Mines", "amount": "31 503 ₽"}, {"id": "USER-933680", "game": "Rocket", "amount": "7 456 ₽"}, {"id": "USER-746782", "game": "Coinflip", "amount": "30 826 ₽"}, {"id": "USER-453983", "game": "Crash", "amount": "36 315 ₽"}, {"id": "USER-489263", "game": "Crash", "amount": "19 332 ₽"}];
+
+    function formatTime(date) {
+      const h = date.getHours().toString().padStart(2, '0');
+      const m = date.getMinutes().toString().padStart(2, '0');
+      return `${h}:${m}`;
+    }
+
+    function formatDate(date) {
+      const d = date.getDate().toString().padStart(2, '0');
+      const m = (date.getMonth() + 1).toString().padStart(2, '0');
+      const y = date.getFullYear();
+      return `${d}.${m}.${y}`;
+    }
+
+    const container = document.getElementById('wins');
+    let index = 0;
+    function showNextWin() {
+      if (index >= wins.length) {
+        index = 0;
+        container.innerHTML = '';
+      }
+
+      const win = wins[index];
+      const now = new Date();
+      const el = document.createElement('div');
+      el.className = 'win-box';
+      el.innerHTML = `
+        <div class="icon">${icons[win.game]}</div>
+        <div class="info">
+          <div class="game">ID: ${win.id} — ${win.game}</div>
+          <div class="amount">ВЫИГРЫШ: ${win.amount}</div>
+          <div class="timestamp">🕒 ${formatDate(now)} ${formatTime(now)}</div>
+        </div>
+      `;
+      container.appendChild(el);
+      index++;
+      setTimeout(showNextWin, 400);
+    }
+
+    showNextWin();
+  </script>
+
+</body>
+</html>
